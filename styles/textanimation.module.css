@@ -1,0 +1,33 @@
+.animatedheading span span{
+    position: relative;
+    opacity: 0;
+    animation: move-text 0.75s forwards;
+    transition:all 200ms ease;
+}
+
+@keyframes move-text {
+    0% {
+      bottom: -0.8em;
+      opacity: 1;
+    }
+    
+    50% {
+      bottom: 0.8em;
+    }
+  
+    100% {
+      bottom: 0;
+      opacity: 1;
+      display:inline-block;
+    }
+}
+
+.animatedheading span span:nth-child(2n) { color: lightseagreen;}
+.animatedheading span span:nth-child(3n) { color: orange; }
+.animatedheading span span:nth-child(4n) { color: dodgerblue; }
+.animatedheading span span:nth-child(5n) { color: blueviolet; }
+
+.animatedheading span span:hover{
+    display:inline-block;
+    rotate:-360deg;
+}
