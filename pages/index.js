@@ -14,10 +14,8 @@ export default function Home() {
             Hi, I AM 
             SYED ZAYYAN MASUD  
         </AnimateText></h1>
-        <h2>
-          <AnimateText>
+        <h2 style = {{textAlign:"center"}}>
             I AM A PHARMACOLOGY STUDENT, AND I LIKE TO MAKE MUSIC AND WEBSITES
-          </AnimateText>
           </h2>
           <div className = "extra-text-container">
             <p>I am currently a 3rd year undergraduate at Queen Mary University of London. When I am not busy learning to 

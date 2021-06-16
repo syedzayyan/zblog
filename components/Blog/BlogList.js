@@ -4,6 +4,7 @@ import Card from "../Card"
 export default function BlogLists({ data }) {
     return (
         <div>
+            <h1>Blog</h1>
             {data.map((datum, ind) =>
                 <a className="card-links" key={ind} href={`/blog/${datum.POST_ID}`}>
                     <Card img_url = {datum.HEADER_IMAGE}>

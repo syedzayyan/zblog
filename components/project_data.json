@@ -5,6 +5,11 @@
         "exampleLink":"https://syedzayyan.github.io/96wellplate/"
     },
     {
+        "cardImage" : "/img/pi-file-server.png",
+        "cardTitle":"Pi File Server",
+        "exampleLink":"https://github.com/syedzayyan/pi-file-server"
+    },
+    {
         "cardImage" : "/img/reiter.png",
         "cardTitle":"Dr. Reiter's Website",
         "exampleLink":"https://drreiter.com/"

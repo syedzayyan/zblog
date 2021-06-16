@@ -9,9 +9,10 @@ export default function Project() {
           desc = "Projects I made :)"
           imgURL = {picURL}
         />
+        <h1>Projects</h1>
             {data.map((datum, ind) =>
                 <Card key={ind} img_url={datum.cardImage}>
-                    <h1>{datum.cardTitle}</h1>
+                    <h2>{datum.cardTitle}</h2>
                     <a target="_blank" href = {datum.exampleLink}> Link</a>
                 </Card>
             )}
