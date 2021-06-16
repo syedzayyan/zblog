@@ -15,7 +15,7 @@ export default withIronSession(
           TAG : values.tags,
           TITLE  : values.title,
           CONTENT : values.markdown,
-          CREATED_AT : JSON.stringify(new Date()),
+          CREATED_AT : Date.now(),
           STATUS : values.status,
           HEADER_IMAGE : values.headerImage,
           DESC : values.desc,

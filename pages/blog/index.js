@@ -1,6 +1,7 @@
 import BlogLists from "../../components/Blog/BlogList"
 import db from "../../db"
 import getConfig from 'next/config'
+import HeadTag from "../../components/HeadTag"
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -23,13 +24,19 @@ export async function getStaticProps(context) {
     findAndRemove(postListData, 'STATUS', '0');
     return {
       props: {postListData}, // will be passed to the page component as props
-      revalidate: 60
+      revalidate: 180
     }
   }
   
 
 export default function Blog({postListData}){
     return (
+      <>
+          <HeadTag title = "Syed Zayyan Masud's Blog" 
+          desc = "Projects I made :)"
+          imgURL = "/img/profile.jpg"
+        />
         <BlogLists data = {postListData} />
+        </>
     )
 }

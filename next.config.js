@@ -1,4 +1,7 @@
 module.exports = {
+  images: {
+    domains: ['blogpicsforz.s3.us-east-2.amazonaws.com'],
+  },
     serverRuntimeConfig: {
       accessKey: process.env.DB_ACCESS_KEY_ID,
       secretKey: process.env.DB_SECRET_ACCESS_KEY,

@@ -1,0 +1,12 @@
+[
+    {
+        "cardImage" : "/img/96well.png",
+        "cardTitle":"96 Well Plate Layout Maker",
+        "exampleLink":"https://syedzayyan.github.io/96wellplate/"
+    },
+    {
+        "cardImage" : "/img/reiter.png",
+        "cardTitle":"Dr. Reiter's Website",
+        "exampleLink":"https://drreiter.com/"
+    }
+]
