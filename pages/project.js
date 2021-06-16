@@ -1,12 +1,13 @@
 import Card from "../components/Card";
 import data from "../components/project_data.json"
-import HeadTag from "../components/HeadTag";
+import HeadTag, {picURL} from "../components/HeadTag";
+
 export default function Project() {
     return (
         <div>
         <HeadTag title = "Syed Zayyan Masud's Projects" 
           desc = "Projects I made :)"
-          imgURL = "/img/profile.jpg"
+          imgURL = {picURL}
         />
             {data.map((datum, ind) =>
                 <Card key={ind} img_url={datum.cardImage}>

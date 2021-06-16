@@ -1,7 +1,7 @@
 import BlogLists from "../../components/Blog/BlogList"
 import db from "../../db"
 import getConfig from 'next/config'
-import HeadTag from "../../components/HeadTag"
+import HeadTag, {picURL} from "../../components/HeadTag"
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -34,7 +34,7 @@ export default function Blog({postListData}){
       <>
           <HeadTag title = "Syed Zayyan Masud's Blog" 
           desc = "Projects I made :)"
-          imgURL = "/img/profile.jpg"
+          imgURL = {picURL}
         />
         <BlogLists data = {postListData} />
         </>

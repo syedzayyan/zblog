@@ -1,7 +1,7 @@
 import BlogDetails from "../../components/Blog/BlogDetail";
 import db from "../../db"
 import getConfig from 'next/config'
-import HeadTag from "../../components/HeadTag";
+import HeadTag, {picURL} from "../../components/HeadTag";
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -49,7 +49,7 @@ export default function BlogDetailHigh({data}){
       <>
           <HeadTag title = {data.TITLE} 
           desc = {data.DESC} 
-          imgURL = {data.HEADER_IMAGE === undefined ? (null):("/img/profile.jpg")} 
+          imgURL = {data.HEADER_IMAGE === undefined ? (null):(picURL)} 
         />
         <BlogDetails data = {data} />
         </>

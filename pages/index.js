@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import AnimateText from "../components/Home/AnimateText"
 import Image from "next/image";
-import HeadTag from "../components/HeadTag"
+import HeadTag, {picURL} from "../components/HeadTag"
 export default function Home() {
   return (
     <div>
       <HeadTag title = "Syed Zayyan Masud" 
           desc = "This is Syed Zayyan Masud's personal website and blog. I write my thoughts and sometimes opinions down here"
-          imgURL = "/img/profile.jpg"
+          imgURL = {picURL}
       />
       <h1>
         <AnimateText copy="SYED ZAYYAN MASUD" role="heading">    

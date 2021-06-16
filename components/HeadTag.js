@@ -2,8 +2,10 @@ import { IsPropertyDescriptor } from "es-abstract/es5"
 import Head from "next/head"
 
 const webURL = "https://www.syedzayyan.com"
+export const picURL = webURL + "/img/profile.jpg"
 
 export default function HeadTag(props){
+
     return(
         <Head>
         <title>{props.title}</title>
