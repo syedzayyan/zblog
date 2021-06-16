@@ -1,9 +1,17 @@
-import { server } from '../../config/serverURL';
 import BlogDetails from "../../components/Blog/BlogDetail";
+import db from "../../db"
+import getConfig from 'next/config'
+
+const { serverRuntimeConfig } = getConfig()
+
+var params = {
+    TableName: serverRuntimeConfig.tableName,
+    Select: "ALL_ATTRIBUTES"
+};
 
 export const getStaticPaths = async () => {
-    const res = await fetch(server + "/api/getblog")
-    const info = await res.json()
+    const { Items } = await await db.scan(params)
+    const info = Items
 
     const paths = info.map((datum, ind) => {
         if (datum.STATUS === "0"){
@@ -21,8 +29,8 @@ export const getStaticPaths = async () => {
   }
   export const getStaticProps = async (context) => {
     const slug = context.params.slug;
-    const res = await fetch(server + "/api/getblog")
-    const cleanRes = await res.json()
+    const { Items } = await await db.scan(params)
+    const cleanRes = Items
     var paths 
     cleanRes.map((datum, ind) => {
       if (datum.POST_ID === slug){
