@@ -2,7 +2,7 @@ import { server } from '../../config/serverURL';
 import BlogLists from "../../components/Blog/BlogList"
 
 export async function getStaticProps(context) {
-    const postListRes = await fetch(server + "/api/get_blog")
+    const postListRes = await fetch(server + "/api/getblog")
     const postListData = await postListRes.json()
     function findAndRemove(array, property, value) {
         array.forEach(function(result, index) {

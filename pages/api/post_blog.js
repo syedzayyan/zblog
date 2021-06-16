@@ -1,12 +1,15 @@
 import { withIronSession } from "next-iron-session";
 import db from "../../db";
+import getConfig from 'next/config'
+
+const { serverRuntimeConfig } = getConfig()
 
 export default withIronSession(
   async (req, res) => {
     if (req.method === "POST") {
       const { values } = req.body;
       var params = {
-        TableName: 'BLOG_Z',
+        TableName: serverRuntimeConfig.tableName,
         Item: {
           POST_ID : values.slug,
           TAG : values.tags,
@@ -19,14 +22,8 @@ export default withIronSession(
           MAILED_STATUS : values.mailedStatus,
         },
       }
-      db.put(params, (err, resp) => {
-        if (err) {
-          console.log(err)
-        } else {
-          return res.status(200).send(resp)
-        }
-      })
-      return res.status(200).send("Method Allowed");
+      db.put(params)
+      res.status(200).json(params.Item);
     } else {
       return res.status(405).send("Method Not Allowed");
     }
@@ -36,7 +33,7 @@ export default withIronSession(
     cookieOptions: {
       secure: process.env.NODE_ENV === "production" ? true : false
     },
-    password: process.env.APPLICATION_SECRET
+    password: serverRuntimeConfig.appSecret
   }
 );
 

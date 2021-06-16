@@ -19,7 +19,7 @@ export const getServerSideProps = withIronSession(
     var params = {
       TableName: 'BLOG_Z',
     }
-    const postListRes = await fetch(server + "/api/get_blog")
+    const postListRes = await fetch(server + "/api/getblog")
     const postListData = await postListRes.json()
     return {
       props: { user, postListData }

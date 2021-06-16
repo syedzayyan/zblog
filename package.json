@@ -8,8 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.18.0",
-    "@next-auth/dynamodb-adapter": "^0.3.1-canary.207",
     "aws-sdk": "^2.927.0",
     "bcrypt": "^5.0.1",
     "formik": "^2.2.9",

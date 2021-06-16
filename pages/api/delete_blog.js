@@ -1,12 +1,15 @@
 import { withIronSession } from "next-iron-session";
 import db from "../../db";
+import getConfig from 'next/config'
+
+const { serverRuntimeConfig } = getConfig()
 
 export default withIronSession(
   async (req, res) => {
     if (req.method === "POST") {
       const { id } = req.body;
       var params = {
-        TableName: 'BLOG_Z',
+        TableName: serverRuntimeConfig.tableName,
         Key: {
           POST_ID : id,
         },
@@ -24,11 +27,11 @@ export default withIronSession(
     }
   },
   {
-    cookieName: "MYSITECOOKIE",
+    cookieName: "SYEDZAYYAN",
     cookieOptions: {
       secure: process.env.NODE_ENV === "production" ? true : false
     },
-    password: process.env.APPLICATION_SECRET
+    password: serverRuntimeConfig.appSecret
   }
 );
 

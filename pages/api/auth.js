@@ -1,8 +1,11 @@
 import { withIronSession } from "next-iron-session";
 import bcrypt from "bcrypt";
+import getConfig from 'next/config'
+
+const { serverRuntimeConfig } = getConfig()
 
 const VALID_EMAIL = "masudzayyan@gmail.com";
-const HASH_ADMIN = process.env.HASH_ADMIN;
+const HASH_ADMIN = serverRuntimeConfig.hashAdmin
 
 export default withIronSession(
     async (req, res) => {

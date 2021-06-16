@@ -1,19 +1,23 @@
 import aws from 'aws-sdk';
+import getConfig from 'next/config'
+
+const { serverRuntimeConfig } = getConfig()
 
 export default async function handler(req, res) {
   aws.config.update({
-    accessKeyId: process.env.DB_ACCESS_KEY_ID,
-    secretAccessKey: process.env.DB_SECRET_ACCESS_KEY,
-    region: process.env.REGION,
+    accessKeyId: serverRuntimeConfig.accessKey,
+    secretAccessKey: serverRuntimeConfig.secretKey,
+    region: serverRuntimeConfig.region,
     signatureVersion: 'v4',
   });
 
   const s3 = new aws.S3();
   const post = await s3.createPresignedPost({
-    Bucket: process.env.BUCKET_NAME,
+    Bucket: serverRuntimeConfig.bucketName,
     Fields: {
       key: req.query.file,
     },
+    ACL:'public-read',
     Expires: 60, // seconds
     Conditions: [
       ['content-length-range', 0, 7048576], // up to 1 MB

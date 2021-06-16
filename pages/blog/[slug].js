@@ -2,7 +2,7 @@ import { server } from '../../config/serverURL';
 import BlogDetails from "../../components/Blog/BlogDetail";
 
 export const getStaticPaths = async () => {
-    const res = await fetch(server + "/api/get_blog")
+    const res = await fetch(server + "/api/getblog")
     const info = await res.json()
 
     const paths = info.map((datum, ind) => {
@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
   }
   export const getStaticProps = async (context) => {
     const slug = context.params.slug;
-    const res = await fetch(server + "/api/get_blog")
+    const res = await fetch(server + "/api/getblog")
     const cleanRes = await res.json()
     var paths 
     cleanRes.map((datum, ind) => {
