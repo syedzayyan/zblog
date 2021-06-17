@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /blog/*
+Allow: /project
+Disallow: /post
+Disallow: /api/auth
+Disallow: /api/delete_blog
+Disallow: /api/post_blog
+Disallow: /api/logout
+Disallow: /api/getblog
+Disallow: /api/s3
+Disallow: /api/s3_get
+Disallow: /post/index
+Disallow: /post/signin
