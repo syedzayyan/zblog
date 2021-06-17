@@ -28,10 +28,10 @@ export default function Home() {
               Here are my socials and CV
             </p>
           <ul>
-            <li className = "list-home"><a target="_blank" className = "link-text" href = "https://www.linkedin.com/in/zayyan-masud-5988ba19b/">LinkedIn</a></li>
-            <li className = "list-home"><a target="_blank" className = "link-text" href = "https://github.com/syedzayyan">Github</a></li>
-            <li className = "list-home"><a target="_blank" className = "link-text" href= "mailto:masudzayyan@gmail.com">Mail</a></li>
-            <li className = "list-home"><a target="_blank" className = "link-text" href = "https://docs.google.com/document/d/1FAt274s_4wJd9DnU8dL12rubgD6SguCT85uorMfyKgA/edit?usp=sharing">CV</a></li>
+            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://www.linkedin.com/in/zayyan-masud-5988ba19b/">LinkedIn</a></li>
+            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://github.com/syedzayyan">Github</a></li>
+            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href= "mailto:masudzayyan@gmail.com">Mail</a></li>
+            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://docs.google.com/document/d/1FAt274s_4wJd9DnU8dL12rubgD6SguCT85uorMfyKgA/edit?usp=sharing">CV</a></li>
           </ul>
           </div>
         <style>{`
@@ -40,7 +40,7 @@ export default function Home() {
             text-align:center;
           }
           .list-home{
-            list-style-type: circle;
+            list-style: none;
           }
           .div-image-border{
             background-color:black;
