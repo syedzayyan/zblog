@@ -2,6 +2,10 @@ import { withIronSession } from "next-iron-session";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import BlogPost from "../../components/BlogPost"
 import BlogPostList from "../../components/BlogPostList"
+import getConfig from 'next/config'
+import db from "../../db"
+
+const { serverRuntimeConfig } = getConfig()
 
 export const getServerSideProps = withIronSession(
   async ({ req, res }) => {
@@ -29,7 +33,7 @@ export const getServerSideProps = withIronSession(
     cookieOptions: {
       secure: process.env.NODE_ENV === "production" ? true : false
     },
-    password: process.env.APPLICATION_SECRET
+    password: serverRuntimeConfig.appSecret
   }
 );
 

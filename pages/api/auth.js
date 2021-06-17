@@ -36,6 +36,6 @@ export default withIronSession(
         cookieOptions: {
             secure: process.env.NODE_ENV === "production" ? true : false
         },
-        password: process.env.APPLICATION_SECRET
+        password: serverRuntimeConfig.appSecret
     }
 );
