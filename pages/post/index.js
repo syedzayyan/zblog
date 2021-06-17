@@ -2,7 +2,6 @@ import { withIronSession } from "next-iron-session";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import BlogPost from "../../components/BlogPost"
 import BlogPostList from "../../components/BlogPostList"
-import { server } from '../../config/serverURL';
 
 export const getServerSideProps = withIronSession(
   async ({ req, res }) => {
@@ -19,8 +18,8 @@ export const getServerSideProps = withIronSession(
     var params = {
       TableName: 'BLOG_Z',
     }
-    const postListRes = await fetch(server + "/api/getblog")
-    const postListData = await postListRes.json()
+    const { Items } =  await db.scan(params)
+    const postListData = Items
     return {
       props: { user, postListData }
     };

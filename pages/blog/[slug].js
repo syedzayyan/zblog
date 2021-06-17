@@ -30,7 +30,7 @@ export const getStaticPaths = async () => {
   }
   export const getStaticProps = async (context) => {
     const slug = context.params.slug;
-    const { Items } = await await db.scan(params)
+    const { Items } =  await db.scan(params)
     const cleanRes = Items
     var paths 
     cleanRes.map((datum, ind) => {
