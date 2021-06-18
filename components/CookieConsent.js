@@ -3,7 +3,7 @@ import CookieConsent, { Cookies } from "react-cookie-consent";
 export default function CookieConsentComp() {
     return (
         <CookieConsent
-            location="bottom"
+            location="top"
             buttonText="Sure!"
             cookieName="SYEDZAYYANMASUDCOOKIECONSENT"
             style={{ background: "#2B373B" }}
