@@ -1,42 +1,28 @@
 import BlogLists from "../../components/Blog/BlogList"
-import db from "../../db"
-import getConfig from 'next/config'
 import HeadTag, {picURL} from "../../components/HeadTag"
-
-const { serverRuntimeConfig } = getConfig()
-
-var params = {
-    TableName: serverRuntimeConfig.tableName,
-    Select: "ALL_ATTRIBUTES"
-};
+import {createClient} from "contentful"
 
 export async function getStaticProps(context) {
-    const { Items } = await await db.scan(params)
-    const postListData = Items
-    function findAndRemove(array, property, value) {
-        array.forEach(function(result, index) {
-          if(result[property] === value) {
-            //Remove from array
-            array.splice(index, 1);
-          }    
-        });
-    }
-    findAndRemove(postListData, 'STATUS', '0');
+  const client = createClient({
+    space:process.env.CONTENTFUL_SPACE,
+    accessToken:process.env.CONTENTFUL_API_KEY
+  });
+  const res = await client.getEntries({content_type : "title"})
     return {
-      props: {postListData}, // will be passed to the page component as props
+      props: {posts : res.items}, // will be passed to the page component as props
       revalidate: 180
     }
   }
   
 
-export default function Blog({postListData}){
+export default function Blog({ posts }){
     return (
       <>
           <HeadTag title = "Syed Zayyan Masud's Blog" 
           desc = "Projects I made :)"
           imgURL = {picURL}
         />
-        <BlogLists data = {postListData} />
+        <BlogLists data = {posts} />
         </>
     )
 }

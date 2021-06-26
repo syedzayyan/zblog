@@ -1,58 +1,48 @@
 import BlogDetails from "../../components/Blog/BlogDetail";
-import db from "../../db"
-import getConfig from 'next/config'
-import HeadTag, {picURL} from "../../components/HeadTag";
+import HeadTag, { picURL } from "../../components/HeadTag";
+import { createClient } from "contentful"
 
-const { serverRuntimeConfig } = getConfig()
-
-var params = {
-    TableName: serverRuntimeConfig.tableName,
-    Select: "ALL_ATTRIBUTES"
-};
+const client = createClient({
+  space: process.env.CONTENTFUL_SPACE,
+  accessToken: process.env.CONTENTFUL_API_KEY
+});
 
 export const getStaticPaths = async () => {
-    const { Items } = await await db.scan(params)
-    const info = Items
 
-    const paths = info.map((datum, ind) => {
-        if (datum.STATUS === "0"){
-            delete info[ind]
-        }
-      return {
-        params: { slug: datum.POST_ID }
-      }
-    })
-    
+  const res = await client.getEntries({ content_type: "title" })
+
+  const paths = res.items.map((datum) => {
     return {
-      paths,
-      fallback: `blocking`,
+      params: { slug: datum.fields.slug }
     }
+  })
+
+  return {
+    paths,
+    fallback: `blocking`,
   }
-  export const getStaticProps = async (context) => {
-    const slug = context.params.slug;
-    const { Items } =  await db.scan(params)
-    const cleanRes = Items
-    var paths 
-    cleanRes.map((datum, ind) => {
-      if (datum.POST_ID === slug){
-          paths =  cleanRes[ind]
-      }
+}
+export const getStaticProps = async ({ params }) => {
+  const res = await client.getEntries(
+    {
+      content_type: "title",
+      'fields.slug': params.slug
     })
-    return {
-      props: { data: paths },
-      revalidate: 60
-    }
+  return {
+    props: { data: res.items[0] },
+    revalidate: 60
+  }
 }
 
-export default function BlogDetailHigh({data}){
-    return (
-      <>
-          <HeadTag title = {data.TITLE} 
-          desc = {data.DESC} 
-          imgURL = {data.HEADER_IMAGE === undefined ? (null):(picURL)} 
-        />
-        <BlogDetails data = {data} />
-        </>
-    )
+export default function BlogDetailHigh({ data }) {
+  return (
+    <>
+      <HeadTag title={data.fields.title}
+        desc={data.fields.desc}
+        imgURL={data.HEADER_IMAGE === undefined ? (picURL) : ("https:" + data.fields.titleImage.fields.file.url)}
+      />
+      <BlogDetails data={data} />
+    </>
+  )
 }
 
