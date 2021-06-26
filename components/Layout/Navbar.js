@@ -1,6 +1,12 @@
+import Head from "next/head"
+
+
 export default function Navbar() {
   return (
     <nav>
+      <Head>
+        <script async defer data-website-id="6d5d7373-bb7d-4505-83af-46d78cdfa1a6" src="https://umami-zblog.herokuapp.com/umami.js"></script>
+      </Head>
       <div className="navbar">
         <ul>
           <div className="nav-items">
