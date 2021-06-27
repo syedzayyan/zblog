@@ -42,14 +42,11 @@ const renderOptions = {
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         // render the EMBEDDED_ASSET as you need
         return (
-          <div style = {{height:"60vh", width: "60vw", position:"relative", margin : "0 auto"}}>
-            <Image
+            <img
+            width = "60%"
               src={`https://${node.data.target.fields.file.url}`}
-              layout = "fill"
               alt={node.data.target.fields.description}
-              objectFit="contain"
             />
-          </div>
         );
       },
     },
