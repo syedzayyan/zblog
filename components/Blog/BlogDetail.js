@@ -1,12 +1,15 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import timeformatter from "../../timeformatter"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import Image from "next/image";
+
 const renderOptions = {
     renderNode: {
       [INLINES.EMBEDDED_ENTRY]: (node, children) => {
         // target the contentType of the EMBEDDED_ENTRY to display as you need
         if (node.data.target.sys.contentType.sys.id === "blogPost") {
           return (
-            <a href={`/blog/${node.data.target.fields.slug}`}>            {node.data.target.fields.title}
+            <a href={`/blog/${node.data.target.fields.slug}`}>        
             </a>
           );
         }
@@ -39,29 +42,32 @@ const renderOptions = {
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         // render the EMBEDDED_ASSET as you need
         return (
-          <img
-            src={`https://${node.data.target.fields.file.url}`}
-            width="80%"
-            alt={node.data.target.fields.description}
-          />
+          <div style = {{height:"60vh", width: "60vw", position:"relative", margin : "0 auto"}}>
+            <Image
+              src={`https://${node.data.target.fields.file.url}`}
+              layout = "fill"
+              alt={node.data.target.fields.description}
+              objectFit="contain"
+            />
+          </div>
         );
       },
     },
   };
 export default function BlogDetail({ data }) {
-    console.log(data)
     return (
         <div>
             <div>
                 <h1>{data.fields.title}</h1>
-                {data.HEADER_IMAGE === "" ? (null) : (
-                    <div className="div-image-border">
-                        <img src={"https:" + data.fields.titleImage.fields.file.url} className="div-image-border" style = {{maxWidth:"80%"}} />
+                <span>{timeformatter(data.sys.createdAt)}</span><br /><br />     
+                    <div style = {{position:"relative", width : "80vw", height : "80vh"}}>
+                        <Image objectFit="contain" layout = "fill" src={"https:" + data.fields.titleImage.fields.file.url} className="div-image-border" />
                     </div>
-                )}
+                
                 <div>
                     {documentToReactComponents(data.fields.content, renderOptions)}
                 </div>
+                <span style = {{textDecoration : "underline"}}>{data.fields.tag}</span><br />
             </div>
         </div>
     )

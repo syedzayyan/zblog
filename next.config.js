@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ['blogpicsforz.s3.us-east-2.amazonaws.com'],
+    domains: ['images.ctfassets.net'],
   },
     serverRuntimeConfig: {
       accessKey: process.env.DB_ACCESS_KEY_ID,

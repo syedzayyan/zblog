@@ -2,7 +2,6 @@ import timeformatter from "../../timeformatter"
 import Card from "../Card"
 
 export default function BlogLists({ data }) {
-    console.log(data)
     return (
         <div>
             <h1>Blog</h1>
@@ -11,7 +10,7 @@ export default function BlogLists({ data }) {
                     <Card img_url = {"https:" + datum.fields.titleImage.fields.file.url}>
                     <h2>{datum.fields.title}</h2><br></br>
                             <span>{datum.fields.tag}</span><br></br>
-                            <span>{timeformatter(datum.fields.date)}</span>
+                            <span>{timeformatter(datum.sys.createdAt)}</span>
                     </Card>
                 </a>
             )}

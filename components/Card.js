@@ -1,10 +1,12 @@
+import Image from "next/image";
+
 export default function Card(props) {
     return (
         <div>
                     <div className="card">
                         {props.img_url === "" ? (null) : (
                             <div className="div-image-border">
-                                <img src={props.img_url} className="image" />
+                                <Image objectFit = "contain" layout = "fill" src={props.img_url} className="image" />
                             </div>
                         )}
                         &nbsp;
@@ -33,6 +35,10 @@ export default function Card(props) {
                     color:var(--text-primary);
                 }
                 .div-image-border{
+                    position: relative;
+                    height:20vh;
+                    width:20vw;
+                    background-color:var(--bg-secondary);
                     flex-basis:20%;
                     flex-grow:5;
                 }
