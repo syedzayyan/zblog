@@ -51,7 +51,7 @@ export default function BlogNewsletter() {
           ? message
           : `I'll only send emails when new content is posted. No spam.`}
       </div>
-      <button style = {{backgroundColor : "black"}} type="submit">{'✨ Subscribe 💌'}</button>
+      <button className = "umami--click--signup-newsletter" style = {{backgroundColor : "black"}} type="submit">{'✨ Subscribe 💌'}</button>
     </form>
   );
 }
