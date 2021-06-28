@@ -18,7 +18,7 @@ export default function Card(props) {
                 {`
                 .card{
                     background-color:var(--bg-primary);
-                    border:solid 5px var(--text-secondary);
+                    border:solid 1px var(--text-secondary);
                     margin-top:5px;
                     border-radius:5px;
                     padding:8px;

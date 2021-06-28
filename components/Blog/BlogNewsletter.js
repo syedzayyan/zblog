@@ -36,7 +36,7 @@ export default function BlogNewsletter() {
 
   return (
     <form onSubmit={subscribe}>
-      <label htmlFor="email-input">{'Email Address'}</label>
+      <label htmlFor="email-input">{'Email Address'}</label>&nbsp;
       <input
         id="email-input"
         name="email"
@@ -50,8 +50,8 @@ export default function BlogNewsletter() {
         {message
           ? message
           : `I'll only send emails when new content is posted. No spam.`}
-      </div>
-      <button className = "umami--click--signup-newsletter" style = {{backgroundColor : "black"}} type="submit">{'✨ Subscribe 💌'}</button>
+      </div><br />
+      <button className = "umami--click--signup-newsletter" style = {{backgroundColor : "black", color: "white"}} type="submit">{'✨ Subscribe 💌'}</button>
     </form>
   );
 }

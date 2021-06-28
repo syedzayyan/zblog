@@ -3,16 +3,17 @@ import timeformatter from "../../timeformatter"
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import BlogNewsletter from "./BlogNewsletter"
+
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
-      <div style = {{position:"relative", width : "60vw", height : "60vh", margin : "0 auto"}}>
-      <Image
-        objectFit = "contain"
-        layout = "fill"
-        src={"https:" +  node.data?.target?.fields?.file?.url}
-        alt={node.data?.target?.fields?.title}
-      />
+      <div style = {{position:"relative", width : "60vw", height : "60vh", margin : "0 auto", border: "1px solid white"}}>
+        <Image
+          objectFit = "contain"
+          layout = "fill"
+          src={"https:" +  node.data?.target?.fields?.file?.url}
+          alt={node.data?.target?.fields?.title}
+        />
       </div>
     ),
   },
@@ -23,7 +24,7 @@ export default function BlogDetail({ data }) {
         <div>
             <div>
                 <h1>{data.fields.title}</h1>
-                <span>{timeformatter(data.sys.createdAt)}</span><br /><br />     
+                <span>{timeformatter(data.sys.createdAt)}</span><br />  
                     <div style = {{position:"relative", width : "80vw", height : "80vh"}}>
                         <Image objectFit="contain" layout = "fill" src={"https:" + data.fields.titleImage.fields.file.url} className="div-image-border" />
                     </div>
