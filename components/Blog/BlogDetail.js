@@ -2,7 +2,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import timeformatter from "../../timeformatter"
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
-
+import BlogNewsletter from "./BlogNewsletter"
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
@@ -31,7 +31,8 @@ export default function BlogDetail({ data }) {
                 <div>
                     {documentToReactComponents(data.fields.content, renderOptions)}
                 </div>
-                <span style = {{textDecoration : "underline"}}>{data.fields.tag}</span><br />
+                <span style = {{textDecoration : "underline"}}>{data.fields.tag}</span><br /><br />
+                <BlogNewsletter />
             </div>
         </div>
     )
