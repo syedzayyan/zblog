@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav>
       <Head>
-        <script async defer data-website-id="6d5d7373-bb7d-4505-83af-46d78cdfa1a6" src="https://umami-zblog.herokuapp.com/umami.js"></script>
+      <script async defer data-website-id="5cf9ae03-b94e-4920-b7fe-9cddc190a859" src="https://analysis.syedzayyan.com/umami.js"></script>
       </Head>
       <div className="navbar">
         <ul className = "list-nav">
