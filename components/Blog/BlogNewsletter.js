@@ -46,12 +46,11 @@ export default function BlogNewsletter() {
         type="email"
         style = {{color:"black"}}
       />
-      <div>
+      &nbsp;
+      <button className = "umami--click--signup-newsletter" style = {{backgroundColor : "black", color: "white"}} type="submit">{'✨ Subscribe 💌'}</button>
         {message
           ? message
-          : `I'll only send emails when new content is posted. No spam.`}
-      </div><br />
-      <button className = "umami--click--signup-newsletter" style = {{backgroundColor : "black", color: "white"}} type="submit">{'✨ Subscribe 💌'}</button>
+          : ` I'll only send emails when new content is posted. No spam.`}
     </form>
   );
 }

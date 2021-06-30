@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import AnimateText from "../components/Home/AnimateText"
 import Image from "next/image";
 import HeadTag, {picURL} from "../components/HeadTag"
@@ -27,20 +26,30 @@ export default function Home() {
             <p>
               Here are my socials and CV
             </p>
-          <ul>
-            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://www.linkedin.com/in/zayyan-masud-5988ba19b/">LinkedIn</a></li>
-            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://github.com/syedzayyan">Github</a></li>
-            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href= "mailto:masudzayyan@gmail.com">Mail</a></li>
-            <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://docs.google.com/document/d/1FAt274s_4wJd9DnU8dL12rubgD6SguCT85uorMfyKgA/edit?usp=sharing">CV</a></li>
-          </ul>
+            <div className = "list-container">
+            <ul>
+              <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://www.instagram.com/syed._.zayyan/">Instagram</a></li>
+              <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://www.linkedin.com/in/zayyan-masud-5988ba19b/">LinkedIn</a></li>
+              <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://github.com/syedzayyan">Github</a></li>
+              <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href= "mailto:masudzayyan@gmail.com">Mail</a></li>
+              <li className = "list-home"><a target="_blank" rel="noreferrer" className = "link-text" href = "https://docs.google.com/document/d/1FAt274s_4wJd9DnU8dL12rubgD6SguCT85uorMfyKgA/edit?usp=sharing">CV</a></li>
+            </ul>
+            </div>
           </div>
         <style>{`
           .extra-text-container{
             font-size:1.5rem;
             text-align:center;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+          }
+          .list-container{
+            text-align:left;
+            height : 100%;
           }
           .list-home{
-            list-style: none;
+            list-style: circle;
           }
           .div-image-border{
             background-color:black;

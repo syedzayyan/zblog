@@ -1,5 +1,7 @@
 import timeformatter from "../../timeformatter"
 import Card from "../Card"
+import BlogNewsletter from "./BlogNewsletter"
+
 
 export default function BlogLists({ data }) {
     return (
@@ -14,6 +16,8 @@ export default function BlogLists({ data }) {
                     </Card>
                 </a>
             )}
+            <br />
+            <BlogNewsletter />
             <style>
                 {`
                 .div-image-border{
