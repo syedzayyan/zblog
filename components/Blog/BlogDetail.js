@@ -7,14 +7,12 @@ import BlogNewsletter from "./BlogNewsletter"
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => (
-      <div style = {{position:"relative", width : "60vw", height : "60vh", margin : "0 auto", border: "1px solid white"}}>
         <Image
-          objectFit = "contain"
-          layout = "fill"
+          width={node.data?.target?.fields?.file?.details.image.width}
+          height={node.data?.target?.fields?.file?.details.image.height}
           src={"https:" +  node.data?.target?.fields?.file?.url}
           alt={node.data?.target?.fields?.title}
         />
-      </div>
     ),
   },
 };
@@ -25,11 +23,10 @@ export default function BlogDetail({ data }) {
             <div>
                 <h1>{data.fields.title}</h1>
                 <span>{timeformatter(data.sys.createdAt)}</span><br />  
-                    <div style = {{position:"relative", width : "80vw", height : "80vh"}}>
-                        <Image objectFit="contain" layout = "fill" src={"https:" + data.fields.titleImage.fields.file.url} className="div-image-border" />
-                    </div>
-                
-                <div>
+                        <Image height = {data.fields.titleImage.fields.file.details.image.height}
+                          width = {data.fields.titleImage.fields.file.details.image.width}
+                         src={"https:" + data.fields.titleImage.fields.file.url} className="div-image-border" />
+                <div style = {{minHeight : "100vh", width : "100%"}}>
                     {documentToReactComponents(data.fields.content, renderOptions)}
                 </div>
                 <span style = {{textDecoration : "underline"}}>{data.fields.tag}</span><br /><br />
